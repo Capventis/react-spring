@@ -1,8 +1,9 @@
 name: publish npm package
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - '*'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref_name }}
