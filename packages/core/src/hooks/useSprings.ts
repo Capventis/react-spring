@@ -173,7 +173,9 @@ export function useSprings(
   // New springs are created during render so users can pass them to
   // their animated components, but new springs aren't cached until the
   // commit phase (see the `useIsomorphicLayoutEffect` callback below).
-  const springs = ctrls.current.map((ctrl, i) => getSprings(ctrl, updates.current[i]))
+  const springs = ctrls.current.map((ctrl, i) =>
+    getSprings(ctrl, updates.current[i])
+  )
 
   const context = useContext(SpringContext)
   const prevContext = usePrev(context)
