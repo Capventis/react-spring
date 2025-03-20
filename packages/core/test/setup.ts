@@ -60,6 +60,9 @@ beforeEach(() => {
     requestAnimationFrame: global.mockRaf.raf,
     colors,
     skipAnimation: false,
+    // This lets our useTransition hook force its component
+    // to update from within an "onRest" handler.
+    batchedUpdates: act,
   })
 })
 
@@ -135,7 +138,7 @@ global.advanceUntil = async test => {
       willAdvance: observe,
     })
 
-    await act(() => jest.advanceTimersByTimeAsync(1000 / 60))
+    jest.advanceTimersByTime(1000 / 60)
     global.mockRaf.step()
 
     // Stop observing after the frame is processed.
@@ -144,7 +147,7 @@ global.advanceUntil = async test => {
     }
 
     // Ensure pending effects are flushed.
-    await act(() => flushMicroTasks())
+    await flushMicroTasks()
 
     // Prevent infinite recursion.
     if (++steps > 1e3) {
