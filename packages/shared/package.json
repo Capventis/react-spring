@@ -1,5 +1,5 @@
 {
-  "name": "@react-spring/shared",
+  "name": "@capventis/react-spring/shared",
   "version": "9.7.5",
   "description": "Globals and shared modules",
   "module": "./dist/react-spring_shared.legacy-esm.js",
@@ -42,8 +42,8 @@
     "Josh Ellis (https://github.com/joshuaellis)"
   ],
   "dependencies": {
-    "@react-spring/rafz": "~9.7.5",
-    "@react-spring/types": "~9.7.5"
+    "@capventis/react-spring/rafz": "~9.7.5",
+    "@capventis/react-spring/types": "~9.7.5"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0"

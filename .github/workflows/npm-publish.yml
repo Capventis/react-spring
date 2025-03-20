@@ -1,0 +1,42 @@
+name: publish npm package
+
+on:
+  release:
+    types: [published]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  release:
+    name: 'Package Release'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.12.1
+        with:
+          access_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/checkout@v4
+
+      - name: Setup npmrc
+        run: echo "@capventis:registry=https://npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > .npmrc
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'yarn'
+          scope: '@capventis'
+          registry-url: https://npm.pkg.github.com/
+
+      - name: Install
+        run: yarn install --immutable
+
+      - name: Build
+        run: yarn build-ci
+
+      - run: ./scripts/version-and-publish.sh
+        env:
+          VERSION: '${{ github.sha }}'
+          DIST_TAG: release

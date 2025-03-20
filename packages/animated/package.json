@@ -1,5 +1,5 @@
 {
-  "name": "@react-spring/animated",
+  "name": "@capventis/react-spring/animated",
   "version": "9.7.5",
   "description": "Animated component props for React",
   "module": "./dist/react-spring_animated.legacy-esm.js",
@@ -49,8 +49,8 @@
     "pack": "yarn pack"
   },
   "dependencies": {
-    "@react-spring/shared": "~9.7.5",
-    "@react-spring/types": "~9.7.5"
+    "@capventis/react-spring/shared": "~9.7.5",
+    "@capventis/react-spring/types": "~9.7.5"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0"

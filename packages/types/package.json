@@ -1,5 +1,5 @@
 {
-  "name": "@react-spring/types",
+  "name": "@capventis/react-spring/types",
   "version": "9.7.5",
   "description": "Internal package with TypeScript stuff",
   "module": "./dist/react-spring_types.legacy-esm.js",
