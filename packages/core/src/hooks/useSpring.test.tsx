@@ -139,7 +139,7 @@ function createUpdater(Component: React.ComponentType<{ args: [any, any?] }>) {
     }
   })
 
-  function renderWithContext(elem: JSX.Element) {
+  function renderWithContext(elem: React.JSX.Element) {
     const wrapped = (
       <SpringContextProvider {...context}>{elem}</SpringContextProvider>
     )
